@@ -6,15 +6,16 @@ from calculator import evaluar
 class mainWindowCalculator:
     def __init__(self, root):
         self.root = root
+        self.pillImage = Image.open("cat.ico")
         self.root.title('Calculator')
         self.root.resizable(False, False)
+        self.root.iconbitmap('cat.ico')
         self.root.geometry('300x150')
         self.root.attributes('-alpha', 0.7)
         self.createElements()
     
     def createElements(self):
         #Fondo
-        self.pillImage = Image.open("cat.png")
         image = self.pillImage.resize((300,150))
         self.image = ImageTk.PhotoImage(image)
         backGround = Label(self.root, image=self.image)
@@ -72,6 +73,7 @@ class calculatorWindow:
 
         #Fondo
         image = mainWindow.pillImage
+        self.parent.iconbitmap('cat.ico')
         image = image.resize((250,300))
         self.image = ImageTk.PhotoImage(image)
         image = Label(self.parent, image=self.image)
@@ -116,7 +118,7 @@ class calculatorWindow:
         self.parent.destroy()
         mainWindow.root.deiconify()
 
-
-mainWindow = Tk()
-logic = mainWindowCalculator(mainWindow)
-mainWindow.mainloop()
+if __name__ == '__main__':
+    mainWindow = Tk()
+    logic = mainWindowCalculator(mainWindow)
+    mainWindow.mainloop()
